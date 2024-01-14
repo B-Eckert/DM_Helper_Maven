@@ -30,6 +30,7 @@ public class NPC {
         boolean[] defTiers = {true, true, false, false, false, false};
         randomRace(defTiers);
         randomProfs(7);
+        randomType();
     }
 
     /**
@@ -219,6 +220,10 @@ public class NPC {
                 profNum++;
             profNum--;
         }
+    }
+
+    public void randomType(){
+        this.type = Types.randomType();
     }
 
     /**

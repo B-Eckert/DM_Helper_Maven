@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Main {
     private static Scanner jin = new Scanner(System.in);
     public static void main(String[] args) throws IOException {
-        genRandoms(1000);
+        menu();
     }
 
     /**
@@ -22,7 +22,8 @@ public class Main {
         for(int i = 0; i < number; i++) {
             NPC example = new NPC("Random NPC", "A randbob", "Level 0 Rando", "Human");
             example.randomRace(Races.genTiers(true, true, true, true, true, true));
-            example.setType("Level 0 " + example.getRace());
+            example.randomType();
+            example.setType("Level 0 " + example.getType());
             ChargenLog.logWithTime(example.toString());
         }
     }
@@ -37,7 +38,8 @@ public class Main {
         for(int i = 0; i < number; i++) {
             NPC example = new NPC("Random NPC", "A randbob", "Level 0 Rando", "Human");
             example.randomRace(Races.genTiers(true, true, true, true, true, true));
-            example.setType("Level 0 " + example.getRace());
+            example.randomType();
+            example.setType("Level 0 " + example.getType());
             if(broken){
                 example.randomStatsPowerful();
             }
@@ -53,7 +55,7 @@ public class Main {
      */
     public static void genSpecificRace(String race, int number) throws IOException{
         for(int i = 0; i < number; i++) {
-            NPC example = new NPC("Random " + race, "A random " + race, "Level 0 " + race, race);
+            NPC example = new NPC("Random " + race, "A random " + race, "Level 0 " + Types.randomType(), race);
             ChargenLog.logWithTime(example.toString());
         }
     }
@@ -67,7 +69,7 @@ public class Main {
      */
     public static void genSpecificRace(String race, int number, boolean broken) throws IOException{
         for(int i = 0; i < number; i++) {
-            NPC example = new NPC("Random " + race, "A random " + race, "Level 0 " + race, race);
+            NPC example = new NPC("Random " + race, "A random " + race, "Level 0 " + Types.randomType(), race);
             if(broken){
                 example.randomStatsPowerful();
             }
@@ -97,7 +99,7 @@ public class Main {
         boolean operating = true;
         while(operating){
             System.out.println("" +
-                    " 1) Random people.NPC\n" +
+                    " 1) Random NPC\n" +
                     "-1) Quit");
             int opt = jin.nextInt();
             jin.nextLine();
