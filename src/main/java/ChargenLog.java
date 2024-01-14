@@ -27,6 +27,10 @@ public class ChargenLog {
      */
     public static void ensureFile() throws IOException {
         Path p = Paths.get(FILE_NAME);
+        File dir = new File(DIR_NAME);
+        if(!dir.exists()){
+            dir.mkdir();
+        }
         try{
             Files.readAllLines(p);
         } catch (NoSuchFileException e) {
@@ -104,5 +108,6 @@ public class ChargenLog {
     }
 
     final static Charset ENCODING = StandardCharsets.UTF_8; // defunct
-    final static String FILE_NAME = System.getProperty("user.home") + "\\Documents\\_Coding\\storage\\chargenlog.txt";
+    final static String DIR_NAME = System.getProperty("user.home") + "\\Documents\\_Coding\\storage\\";
+    final static String FILE_NAME = DIR_NAME + "chargenlog.txt";
 }
