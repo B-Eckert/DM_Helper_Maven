@@ -100,6 +100,7 @@ public class Main {
         while(operating){
             System.out.println("" +
                     " 1) Random NPC\n" +
+                    " 2) Random Bulk NPC\n"+
                     "-1) Quit");
             int opt = jin.nextInt();
             jin.nextLine();
@@ -127,6 +128,19 @@ public class Main {
                 }
                 System.out.println(generated.toString());
                 ChargenLog.logWithTime(generated.toString());
+            }
+            if(opt == 2){
+                System.out.print("Number of NPCs to generate: ");
+                System.out.flush();
+                int number = jin.nextInt();
+                jin.nextLine();
+                NPC generated = new NPC();
+                while(number != 0){
+                    System.out.println(generated.toString());
+                    ChargenLog.logWithTime(generated.toString());
+                    number--;
+                    generated = new NPC();
+                }
             }
             else if(opt == -1)
                 operating = false;

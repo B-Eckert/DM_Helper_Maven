@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class NPC {
     // All the base features of a n NPC (name, desc, race, etc)
-    protected String name = "Defaulto", desc = "Default Dude", race = "Human", type = "Classless"; //type = class
+    protected String name = "Unnamed", desc = "An unnamed adventurer", race = "Faceless", type = "Classless"; //type = class
     protected int stats[] = {0, 0, 0, 0, 0, 0}; //STR - DEX - CON - WIS - INT - CHA
     protected int bonuses[] = {0, 0, 0, 0, 0, 0}; // above
     protected int profBonus = 1, level = 0;
@@ -351,7 +351,7 @@ public class NPC {
      */
     public String toString(){
         String end = "";
-        end+="Name: " + name + "\nDesc: " + desc + "\nRace: " + race + "\nClass: " + type;
+        end+="Name: " + name + "\nDesc: " + desc + "\nRace: " + race + "\nClass: Level " + level + " " + type;
         for(int i = 0; i < stats.length; i++){
             if(i%2 == 0)
                 end += "\n";
