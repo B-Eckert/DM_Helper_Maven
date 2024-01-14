@@ -1,5 +1,10 @@
 package people;
 
+/*
+ * Brant Eckert, December 2019 - Modified January 2024
+ * Stats, bonuses, proficiency bonus, proficiencies and race of an NPC
+ */
+
 import dieRolling.DieRolling;
 import tools.General;
 
@@ -11,6 +16,7 @@ public class Races {
     public static final String[] MAGICAL_RACES = {"Genasi", "Aasimar", "Simic Hybrid", "Changeling", "Shifter", "Kalashtar"};                   //t4
     public static final String[] IMPOSSIBLE_RACES = {"Warforged"};                                                                              //t5
 
+    public static final boolean[] OPT_ALL = {true, true, true, true, true, true};
     /**
      * Generates the tier array for the randomRace method based on boolean qualifiers.
      * @param normal Whether or not 'normal' fantasy races are allowed
@@ -54,6 +60,14 @@ public class Races {
         String race = "";
         race = racePool[DieRolling.pureRandom(racePool.length) - 1];
         return race;
+    }
+
+    /**
+     * Produces a random race from a list of races.
+     * @return Returns a random race.
+     */
+    public static String randomRace(){
+        return randomRace(OPT_ALL);
     }
 
     /**

@@ -9,7 +9,7 @@ import tools.General;
 import java.util.ArrayList;
 
 /*
- * Brant Eckert, December 2019
+ * Brant Eckert, December 2019 - Modified January 2024
  * Stats, bonuses, proficiency bonus, proficiencies and race of an NPC
  */
 
@@ -214,7 +214,7 @@ public class NPC {
         int profNum = DieRolling.pureRandom(maxPossible);
         while(profNum > 0){
             String potSkill = Skills.SKILLS[DieRolling.pureRandom(Skills.SKILLS.length-1)];
-            if(profs.indexOf(potSkill) == -1)
+            if(!profs.contains(potSkill))
                 profs.add(potSkill);
             else
                 profNum++;
@@ -222,6 +222,9 @@ public class NPC {
         }
     }
 
+    /**
+     * Generates a random class for the character to have.
+     */
     public void randomType(){
         this.type = Types.randomType();
     }
@@ -232,7 +235,7 @@ public class NPC {
      */
     public void learnSkill(String skill){
         if(General.exists(skill, Skills.SKILLS_AND_SAVES)){
-            if(profs.indexOf(skill) == -1){
+            if(!profs.contains(skill)){
                 profs.add(skill);
             }
         }
@@ -271,6 +274,15 @@ public class NPC {
         }
         calcStatBonuses();
     }
+
+    /**
+     * Generate a random race without a specific set of restrictions.
+     */
+    public void randomRace(){
+        randomRace(Races.OPT_ALL);
+    }
+
+    //================ GETTERS AND SETTERS ========================
 
     /**
      * Sets the race of the character.
@@ -345,8 +357,12 @@ public class NPC {
         name = nName;
     }
 
+    // ================ TO STRING ==================
+
     /**
      * Represents the character as a string.
+     * Note: Kept as concatenation rather than stringbuilder for readability. Java compiler translates it to
+     * stringbuilder anyway.
      * @return Formatted string representing a character object.
      */
     public String toString(){

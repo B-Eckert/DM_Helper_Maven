@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
 /*
- * Brant Eckert February 2020
+ * Brant Eckert February 2020 - Modified January 2024
  * Outputs everything into a file called the ChargenLog; in a consistent place on my computer, and I believe it creates
  * a new directory if one doesn't previously exist
  */
@@ -91,8 +91,7 @@ public class ChargenLog {
      * @throws IOException Exception thrown when file IO error occurs.
      */
     public static void logWithTime(String inLog) throws IOException{
-        now = LocalDateTime.now();
-        log("Entry made at " + dtf.format(now));
+        log("Entry made at " + dtf.format(LocalDateTime.now()));
         log(inLog);
     }
 
